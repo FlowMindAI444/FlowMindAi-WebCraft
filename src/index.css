@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --paper: #f2efe9;
+  --ink: #1c1916;
+  --line: #1c1916;
+  --maroon: #5a1420;
+  --maroon-deep: #521220;
+  --muted: #5f5a53;
+
+  /* Derivados del sistema: hairline = --line al 13%, hover = --ink al 4%. */
+  --hairline: rgba(28, 25, 22, 0.13);
+  --hover: rgba(28, 25, 22, 0.04);
+  --paper-70: rgba(242, 239, 233, 0.7);
+
+  --display: 'Inter Tight', 'Inter', sans-serif;
+  --mono: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--paper);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

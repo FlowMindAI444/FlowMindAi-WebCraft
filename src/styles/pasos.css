@@ -1,0 +1,642 @@
+/* ---------- Layout de dos columnas ---------- */
+
+.paso {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  align-items: stretch;
+}
+
+/* ---------- Índice de pasos ---------- */
+
+.indice {
+  border-right: 1px solid var(--hairline);
+  padding: 32px 24px;
+}
+
+.indice-micro {
+  margin-bottom: 22px;
+}
+
+.indice-barra {
+  display: none;
+}
+
+.indice-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-inline: -24px;
+}
+
+.indice-item {
+  position: relative;
+}
+
+.indice-boton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 11px 24px;
+  color: var(--muted);
+  font: inherit;
+}
+
+.indice-num {
+  flex: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.indice-nombre {
+  font-size: 13px;
+}
+
+.indice-item.es-actual .indice-boton {
+  color: var(--ink);
+}
+
+/* Barra de 2px pegada al borde izquierdo de la columna. */
+.indice-item.es-actual::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--maroon);
+}
+
+.indice-item.es-previo .indice-boton:hover {
+  background: var(--hover);
+  color: var(--ink);
+}
+
+.indice-item.es-futuro .indice-boton {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.indice-palomita {
+  margin-left: auto;
+  display: inline-flex;
+  color: var(--muted);
+}
+
+/* ---------- Panel del paso ---------- */
+
+.paso-panel {
+  --pad-panel: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 36px var(--pad-panel) 44px;
+}
+
+.paso-panel--ancho {
+  --pad-panel: 36px;
+}
+
+.paso-encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-inline: calc(-1 * var(--pad-panel));
+  padding: 0 var(--pad-panel) 26px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.paso-encabezado .titulo {
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1;
+}
+
+.paso-ayuda {
+  max-width: 480px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  text-align: center;
+}
+
+.paso-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.paso-acciones {
+  display: flex;
+  justify-content: flex-end;
+  margin-inline: calc(-1 * var(--pad-panel));
+  padding: 22px var(--pad-panel) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bloque + .bloque {
+  border-top: 1px solid var(--hairline);
+  padding-top: 28px;
+}
+
+/* ---------- Aviso inline ---------- */
+
+.aviso {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--hairline);
+  padding: 18px;
+}
+
+.aviso-texto {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.aviso-acciones {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.aviso-discreto {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Paso 3: estilo ---------- */
+
+.estilo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(290px, 400px);
+}
+
+/* La hairline vertical va en la columna que estira, para que llegue a todo lo alto. */
+.estilo-controles {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-right: 1px solid var(--hairline);
+  padding-right: 36px;
+}
+
+.estilo-preview {
+  align-self: start;
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 28px;
+}
+
+.preview-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.solo-movil {
+  display: none;
+}
+
+.color-fila {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.color-nativo {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  background: none;
+  appearance: none;
+}
+
+.color-nativo::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-nativo::-webkit-color-swatch {
+  border: none;
+}
+
+.color-nativo--chico {
+  width: 34px;
+  height: 34px;
+}
+
+.campo--hex {
+  max-width: 140px;
+}
+
+.color-secundario .micro {
+  margin-right: auto;
+}
+
+.presets-color {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.muestra-preset {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--hairline);
+}
+
+.muestra-preset.es-seleccionada {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.tira-paleta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  border: 1px solid var(--hairline);
+}
+
+.tira-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-right: 1px solid var(--hairline);
+}
+
+.tira-item:last-child {
+  border-right: none;
+}
+
+.tira-muestra {
+  height: 32px;
+  border: 1px solid var(--hairline);
+}
+
+.tira-nombre {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.tira-hex {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ---------- Paso 4: secciones ---------- */
+
+.secciones {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-inline: calc(-1 * var(--pad-panel));
+}
+
+.seccion {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px var(--pad-panel);
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.seccion:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+/* Solo se apaga el texto: el switch tiene que seguir legible para volver a encenderla. */
+.seccion.es-apagada .seccion-num,
+.seccion.es-apagada .seccion-cuerpo {
+  opacity: 0.45;
+}
+
+.seccion.es-arrastrando {
+  background: var(--hover);
+}
+
+.seccion-handle {
+  flex: none;
+  width: 14px;
+  display: inline-flex;
+  color: var(--muted);
+}
+
+.handle {
+  display: inline-flex;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: grab;
+}
+
+.handle:hover {
+  color: var(--ink);
+}
+
+.seccion-num {
+  flex: none;
+  width: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.seccion-cuerpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.seccion-nombre {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.interruptor {
+  flex: none;
+  width: 42px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.interruptor-perilla {
+  width: 14px;
+  height: 14px;
+  background: var(--muted);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.interruptor.es-activo {
+  background: var(--maroon);
+  border-color: var(--maroon);
+}
+
+.interruptor.es-activo .interruptor-perilla {
+  background: var(--paper);
+  transform: translateX(20px);
+}
+
+.interruptor.es-bloqueado {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Paso 5: contenido ---------- */
+
+.repetible {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.repetible-fila {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 0;
+}
+
+.repetible-num {
+  flex: none;
+  width: 22px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.testimonio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--hairline);
+  padding-top: 18px;
+}
+
+.testimonio-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  border: 1px dashed var(--hairline);
+  padding: 32px 20px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzone.es-arrastrando {
+  border-color: var(--maroon);
+  background: var(--hover);
+}
+
+/* Los textos no reciben eventos: así arrastrar sobre ellos no cuenta como salir. */
+.dropzone-texto,
+.dropzone-nota {
+  pointer-events: none;
+}
+
+.dropzone-texto {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dropzone-nota {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.logo-cargado {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--hairline);
+  padding: 12px 14px;
+}
+
+.logo-miniatura {
+  flex: none;
+  max-height: 48px;
+  max-width: 96px;
+  object-fit: contain;
+}
+
+.logo-nombre {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logo-peso {
+  flex: none;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.logo-quitar {
+  flex: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.logo-quitar:hover {
+  color: var(--maroon);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 1080px) {
+  .estilo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .estilo-controles {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  /* El preview pasa debajo de los controles y se puede colapsar. */
+  .estilo-preview {
+    position: static;
+    border-top: 1px solid var(--hairline);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+
+  .solo-movil {
+    display: inline-flex;
+  }
+
+  .preview-caja.es-colapsado {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .paso {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* El índice se convierte en barra de progreso horizontal. */
+  .indice {
+    border-right: none;
+    border-bottom: 1px solid var(--hairline);
+    padding: 16px 20px;
+  }
+
+  .indice-micro {
+    display: none;
+  }
+
+  .indice-barra {
+    display: block;
+    height: 2px;
+    background: var(--hairline);
+    margin-bottom: 12px;
+  }
+
+  .indice-barra-relleno {
+    display: block;
+    height: 100%;
+    background: var(--maroon);
+    transition: width 0.2s ease;
+  }
+
+  .indice-lista {
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    margin-inline: 0;
+    overflow-x: auto;
+  }
+
+  .indice-boton {
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  .indice-item.es-actual::before {
+    display: none;
+  }
+
+  .indice-item.es-actual .indice-boton {
+    border-bottom: 2px solid var(--maroon);
+  }
+
+  .indice-item:not(.es-actual) .indice-nombre {
+    display: none;
+  }
+
+  .indice-palomita {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .paso-panel,
+  .paso-panel--ancho {
+    --pad-panel: 20px;
+    padding-top: 26px;
+  }
+
+  .tira-paleta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tira-item:nth-child(2n) {
+    border-right: none;
+  }
+}

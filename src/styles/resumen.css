@@ -1,0 +1,257 @@
+/* ---------- Resumen ---------- */
+
+.resumen {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 460px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* La hairline vertical va en la columna que estira, para que llegue a todo lo alto. */
+.resumen-columna {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--hairline);
+}
+
+.resumen-bloque {
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.resumen-bloque-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.resumen-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.dato {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+}
+
+.dato-clave {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dato-valor {
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.dato-color {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dato-muestra {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--hairline);
+}
+
+.resumen-preview {
+  align-self: start;
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 28px;
+}
+
+.ver-json {
+  padding: 18px 28px;
+}
+
+.ver-json summary {
+  list-style: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.ver-json summary::-webkit-details-marker {
+  display: none;
+}
+
+.ver-json summary:hover {
+  color: var(--maroon);
+}
+
+.ver-json-cuerpo {
+  margin-top: 14px;
+  max-height: 320px;
+  overflow: auto;
+  border: 1px solid var(--hairline);
+  padding: 14px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  white-space: pre;
+}
+
+.boton-generar {
+  display: block;
+  width: 100%;
+  background: var(--maroon);
+  color: var(--paper);
+  border: none;
+  padding: 30px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 0.15s ease;
+}
+
+.boton-generar:hover {
+  background: var(--maroon-deep);
+}
+
+/* ---------- Modal de generación ---------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  animation: aparece 0.2s ease both;
+  outline: none;
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.modal-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 28px;
+}
+
+.modal-pasos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(420px, 100%);
+}
+
+.modal-paso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--muted);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.modal-paso.es-en-curso {
+  opacity: 1;
+  color: var(--ink);
+}
+
+.modal-paso.es-completo {
+  opacity: 1;
+}
+
+.modal-paso-marca {
+  flex: none;
+  width: 16px;
+  display: inline-flex;
+  color: var(--maroon);
+}
+
+.modal-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  animation: aparece 0.25s ease both;
+}
+
+.modal-palomita {
+  color: var(--maroon);
+  display: inline-flex;
+}
+
+.titulo--modal {
+  font-size: clamp(30px, 4vw, 46px);
+}
+
+.modal-url {
+  color: var(--muted);
+}
+
+@media (max-width: 1080px) {
+  .resumen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .resumen-columna {
+    border-right: none;
+  }
+
+  .resumen-preview {
+    position: static;
+    border-top: 1px solid var(--hairline);
+  }
+}
+
+@media (max-width: 640px) {
+  .resumen-bloque,
+  .resumen-preview,
+  .ver-json {
+    padding-inline: 20px;
+  }
+
+  .dato {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .boton-generar {
+    padding: 24px 20px;
+  }
+}

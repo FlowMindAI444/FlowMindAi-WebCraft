@@ -1,0 +1,168 @@
+/*
+ * Preview del sitio del cliente. Solo usa las variables --c-* / --f-* que
+ * inyecta el componente: nada de --paper, --ink ni --maroon.
+ */
+
+.marco {
+  border: 1px solid var(--c-borde);
+  background: var(--c-superficie);
+  color: var(--c-tinta);
+  font-family: var(--f-texto);
+}
+
+.marco-barra {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--c-borde);
+  color: var(--c-texto-suave);
+}
+
+.sitio-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-borde);
+}
+
+.sitio-logo {
+  font-family: var(--f-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-tinta);
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Ocupa el hueco del logo de texto: se ve completo sin deformarse. */
+.sitio-logo-imagen {
+  display: block;
+  max-height: 20px;
+  max-width: 45%;
+  object-fit: contain;
+}
+
+.sitio-enlaces {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sitio-enlace {
+  font-size: 9px;
+  color: var(--c-texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sitio-boton {
+  display: inline-block;
+  background: var(--c-marca);
+  color: var(--c-superficie);
+  font-size: 11px;
+  padding: 9px 15px;
+  white-space: nowrap;
+}
+
+.sitio-boton--mini {
+  font-size: 8px;
+  padding: 5px 8px;
+}
+
+.sitio-hero {
+  padding: 34px 22px 40px;
+}
+
+.sitio-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.sitio-titulo {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.05;
+  color: var(--c-tinta);
+}
+
+.sitio-desc {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--c-texto-suave);
+  max-width: 36ch;
+}
+
+.sitio-imagen {
+  display: block;
+  min-height: 130px;
+  background: var(--c-superficie-alt);
+  border: 1px solid var(--c-borde);
+}
+
+/* Centrado */
+.sitio--centrado .sitio-texto {
+  align-items: center;
+  text-align: center;
+}
+
+/* Dividido */
+.sitio--dividido .sitio-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+/* Fondo completo */
+.sitio-fondo {
+  background: var(--c-superficie-alt);
+}
+
+.sitio-fondo .sitio-texto {
+  padding: 46px 22px 52px;
+}
+
+/* Tamaño grande (resumen) */
+.marco--grande .sitio-titulo {
+  font-size: 34px;
+}
+
+.marco--grande .sitio-hero {
+  padding: 50px 30px 58px;
+}
+
+.marco--grande .sitio-fondo .sitio-texto {
+  padding: 58px 30px 64px;
+}
+
+.marco--grande .sitio-desc {
+  font-size: 13px;
+}
+
+.marco--grande .sitio-logo {
+  font-size: 16px;
+}
+
+.marco--grande .sitio-logo-imagen {
+  max-height: 26px;
+}
+
+@media (max-width: 520px) {
+  .sitio--dividido .sitio-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .sitio-enlace {
+    display: none;
+  }
+}

@@ -1,0 +1,236 @@
+/* Filas numeradas: mismo tratamiento en menú, tipo de página y objetivo. */
+
+.lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.lista--menu {
+  flex: 1;
+}
+
+.fila {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  /* La división sangra a todo el ancho del viewport. */
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.fila-interior {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 28px;
+}
+
+.fila--grande .fila-interior {
+  gap: 22px;
+  padding: 20px 28px;
+}
+
+.fila-icono {
+  display: inline-flex;
+  flex: none;
+}
+
+.fila-cuerpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fila-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.fila-titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.015em;
+}
+
+.fila--grande .fila-titulo {
+  font-size: 19px;
+}
+
+.fila-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.fila-flecha {
+  flex: none;
+  font-size: 15px;
+}
+
+.fila-badge {
+  flex: none;
+  border: 1px solid var(--hairline);
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fila:hover:not(.es-seleccionada):not(.es-desactivada) {
+  background: var(--hover);
+}
+
+.fila.es-seleccionada {
+  background: var(--maroon);
+  color: var(--paper);
+}
+
+.fila.es-seleccionada .fila-num,
+.fila.es-seleccionada .fila-desc,
+.fila.es-seleccionada .fila-badge {
+  color: var(--paper-70);
+}
+
+.fila.es-seleccionada .fila-badge {
+  border-color: var(--paper-70);
+}
+
+.fila.es-desactivada {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Dentro de un paso la fila sangra a los bordes de la columna. */
+.paso-cuerpo > .lista {
+  margin-inline: calc(-1 * var(--pad-panel));
+}
+
+.paso-cuerpo .fila-interior {
+  width: 100%;
+  padding: 16px var(--pad-panel);
+}
+
+.paso-cuerpo > .lista .fila:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+/* ---------- Opciones con muestra (tipografía y hero) ---------- */
+
+.opciones {
+  display: flex;
+  flex-direction: column;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  padding: 16px 12px;
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.opcion:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+.opcion:hover:not(.es-seleccionada) {
+  background: var(--hover);
+}
+
+.opcion.es-seleccionada {
+  background: var(--maroon);
+  color: var(--paper);
+}
+
+.opcion.es-seleccionada .opcion-num,
+.opcion.es-seleccionada .opcion-meta,
+.opcion.es-seleccionada .fila-desc,
+.opcion.es-seleccionada .tipo-linea {
+  color: var(--paper-70);
+}
+
+.opcion-num {
+  flex: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.opcion-cuerpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.opcion-titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.opcion-meta {
+  flex: none;
+  max-width: 120px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+}
+
+.tipo-titulo {
+  font-size: 25px;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tipo-linea {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.wireframe {
+  flex: none;
+  color: currentColor;
+}
+
+@media (max-width: 640px) {
+  .fila-interior {
+    gap: 14px;
+    padding: 16px 20px;
+  }
+
+  .fila--grande .fila-interior {
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  .opcion-meta {
+    display: none;
+  }
+}
